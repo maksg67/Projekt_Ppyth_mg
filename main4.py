@@ -83,22 +83,22 @@ def edit_pensjonariusz():
     choroby = pensjonariusze[i].choroby
     nazwa_domu = pensjonariusze[i].dom.nazwa
 
-    entry_imie.insert(0, imie)
-    entry_nazwisko.insert(0, nazwisko)
-    entry_wiek.insert(0, wiek)
+    entry_imie_pens.insert(0, imie)
+    entry_nazwsiko_pens.insert(0, nazwisko)
+    entry_wiek_pens.insert(0, wiek)
     entry_choroby.insert(0, choroby)
-    entry_dom.insert(0, nazwa_domu)
+    entry_dom_pens.insert(0, nazwa_domu)
 
     button_dodaj_pensjonariusza.config(text="Zapisz zmiany", command=lambda: update_pensjonariusz(i))
 
 
 def update_pensjonariusz(i):
     pensjonariusz = pensjonariusze[i]
-    pensjonariusze[i].imie = entry_imie.get()
-    pensjonariusze[i].nazwisko = entry_nazwisko.get()
-    pensjonariusze[i].wiek = entry_wiek.get()
+    pensjonariusze[i].imie = entry_imie_pens.get()
+    pensjonariusze[i].nazwisko = entry_nazwsiko_pens.get()
+    pensjonariusze[i].wiek = entry_wiek_pens.get()
     pensjonariusze[i].choroby = entry_choroby.get()
-    nazwa_domu = entry_dom.get()
+    nazwa_domu = entry_dom_pens.get()
 
     # Aktualizacja domu
     for dom in domy:
@@ -117,22 +117,22 @@ def update_pensjonariusz(i):
     pensjonariusz.marker = map_widget.set_marker(pensjonariusz.coordinates[0],pensjonariusz.coordinates[1],text=pensjonariusz.imie)
 
     button_dodaj_pensjonariusza.config(text="Dodaj pensjonariusza", command=add_pensjonariusz)
-    entry_imie.delete(0, END)
-    entry_nazwisko.delete(0, END)
-    entry_wiek.delete(0, END)
+    entry_imie_pens.delete(0, END)
+    entry_nazwsiko_pens.delete(0, END)
+    entry_wiek_pens.delete(0, END)
     entry_choroby.delete(0, END)
-    entry_dom.delete(0, END)
+    entry_dom_pens.delete(0, END)
 
-    entry_imie.focus()
+    entry_imie_pens.focus()
     show_pensjonariusze()
 
 
 def add_pensjonariusz():
-    name = entry_imie.get()
-    surname = entry_nazwisko.get()
-    wiek = entry_wiek.get()
+    name = entry_imie_pens.get()
+    surname = entry_nazwsiko_pens.get()
+    wiek = entry_wiek_pens.get()
     choroby = entry_choroby.get()
-    nazwa_domu = entry_dom.get()
+    nazwa_domu = entry_dom_pens.get()
 
     wybrany_dom = None
     for dom in domy:
@@ -149,11 +149,11 @@ def add_pensjonariusz():
     pensjonariusze.append(new_pensjonariusz)
     # print(pensjonariusze)
 
-    entry_imie.delete(0, END)
-    entry_nazwisko.delete(0, END)
-    entry_wiek.delete(0, END)
+    entry_imie_pens.delete(0, END)
+    entry_nazwsiko_pens.delete(0, END)
+    entry_wiek_pens.delete(0, END)
     entry_choroby.delete(0, END)
-    entry_dom.delete(0, END)
+    entry_dom_pens.delete(0, END)
 
-    entry_imie.focus()
+    entry_imie_pens.focus()
     show_pensjonariusze()

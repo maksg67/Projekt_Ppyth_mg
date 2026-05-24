@@ -73,6 +73,16 @@ def show_dom_details():
     map_widget.set_position(domy[i].coordinates[0], domy[i].coordinates[1])
     map_widget.set_zoom(12)
 
+    # element niepewny
+    listbox_pracownicy_domu.delete(0, END)
+    for p in dom.pracownicy:
+        listbox_pracownicy_domu.insert(END, f"{p.imie} {p.nazwisko}")
+
+    listbox_pensjonariusze_domu.delete(0, END)
+    for p in dom.pensjonariusze:
+        listbox_pensjonariusze_domu.insert(END, f"{p.imie} {p.nazwisko}")
+
+
 def edit_dom():
     i = listbox_lista_domow.index(ACTIVE)
     nazwa = domy[i].nazwa

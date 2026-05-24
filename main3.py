@@ -84,22 +84,22 @@ def edit_pracownik():
     rola = pracownicy[i].rola
     nazwa_domu = pracownicy[i].dom.nazwa
 
-    entry_imie.insert(0, imie)
-    entry_nazwisko.insert(0, nazwisko)
-    entry_wiek.insert(0, wiek)
+    entry_imie_prac.insert(0, imie)
+    entry_nazwisko_prac.insert(0, nazwisko)
+    entry_wiek_prac.insert(0, wiek)
     entry_rola.insert(0, rola)
-    entry_dom.insert(0, nazwa_domu)
+    entry_dom_prac.insert(0, nazwa_domu)
 
     button_dodaj_pracownika.config(text="Zapisz zmiany", command=lambda: update_pracownik(i))
 
 
 def update_pracownik(i):
     pracownik = pracownicy[i]
-    pracownicy[i].imie = entry_imie.get()
-    pracownicy[i].nazwisko = entry_nazwisko.get()
-    pracownicy[i].wiek = entry_wiek.get()
+    pracownicy[i].imie = entry_imie_prac.get()
+    pracownicy[i].nazwisko = entry_nazwisko_prac.get()
+    pracownicy[i].wiek = entry_wiek_prac.get()
     pracownicy[i].rola = entry_rola.get()
-    nazwa_domu = entry_dom.get()
+    nazwa_domu = entry_dom_prac.get()
 
     # Aktualizacja domu
     for dom in domy:
@@ -118,22 +118,22 @@ def update_pracownik(i):
     pracownik.marker = map_widget.set_marker(pracownik.coordinates[0],pracownik.coordinates[1],text=pracownik.imie)
 
     button_dodaj_pracownika.config(text="Dodaj pracownika", command=add_pracownik)
-    entry_imie.delete(0, END)
-    entry_nazwisko.delete(0, END)
-    entry_wiek.delete(0, END)
+    entry_imie_prac.delete(0, END)
+    entry_nazwisko_prac.delete(0, END)
+    entry_wiek_prac.delete(0, END)
     entry_rola.delete(0, END)
-    entry_dom.delete(0, END)
+    entry_dom_prac.delete(0, END)
 
-    entry_imie.focus()
+    entry_imie_prac.focus()
     show_pracownicy()
 
 
 def add_pracownik():
-    name = entry_imie.get()
-    surname = entry_nazwisko.get()
-    wiek = entry_wiek.get()
+    name = entry_imie_prac.get()
+    surname = entry_nazwisko_prac.get()
+    wiek = entry_wiek_prac.get()
     rola = entry_rola.get()
-    nazwa_domu = entry_dom.get()
+    nazwa_domu = entry_dom_prac.get()
 
     wybrany_dom = None
     for dom in domy:
@@ -150,11 +150,11 @@ def add_pracownik():
     pracownicy.append(new_pracownik)
     # print(pracownicy)
 
-    entry_imie.delete(0, END)
-    entry_nazwisko.delete(0, END)
-    entry_wiek.delete(0, END)
+    entry_imie_prac.delete(0, END)
+    entry_nazwisko_prac.delete(0, END)
+    entry_wiek_prac.delete(0, END)
     entry_rola.delete(0, END)
-    entry_dom.delete(0, END)
+    entry_dom_prac.delete(0, END)
 
-    entry_imie.focus()
+    entry_imie_prac.focus()
     show_pracownicy()
